@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        #randomImage {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <img id="randomImage" alt="">
+
+    <script>
+        const images = [
+            'meme.jpg',
+            'meme2.jpg',
+            'meme3.jpg',
+            'meme4.jpeg',
+            'meme5.jpg',
+            'meme6.gif',
+        ];
+
+        let currentIndex = -1;
+
+        function generateNewImage() {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * images.length);
+            } while (newIndex === currentIndex && images.length > 1);
+            
+            currentIndex = newIndex;
+            document.getElementById('randomImage').src = 'images/' + images[currentIndex];
+        }
+
+        window.onload = generateNewImage;
+    </script>
+</body>
+</html>
